@@ -7,13 +7,19 @@ function App() {
   const [username , setUsername] = useState("")
   const[password, setPassword] = useState('');
   const[message, setMessage] = useState('');
+  const [authentication,setAuthentication] = useState(false);
 
   const handleSubmit =(e)=>{
     e.preventDefault();
     if(username ==="user" && password==='password'){
+      setAuthentication(true);
       setMessage("Welcome,user!");
+      // Clear username and password fields after successful login
+      setUsername("");
+      setPassword("");
     }
       else{
+        
         setMessage('Invalid username or password');
       }
   }
@@ -22,6 +28,9 @@ function App() {
   return (
     <div className="App">
       <h1>Login Page</h1>
+
+      {!authentication ?(
+        <>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username: </label>
@@ -46,6 +55,10 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       {message && <h2> {message}</h2>}
+      </>
+      ):(
+        <h3>{message}</h3>
+      )}
     </div>
 
   );
