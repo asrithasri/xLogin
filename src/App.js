@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import './App.css';
 
+
 function App() {
 
   const [username , setUsername] = useState("")
   const[password, setPassword] = useState('');
-  // const[isAuthenticated, setIsAuthenticated] = useState(false);
   const[message, setMessage] = useState('');
 
-  const handleSubmit =()=>{
+  const handleSubmit =(e)=>{
+    e.preventDefault();
     if(username ==="user" && password==='password'){
-      // setIsAuthenticated(true);
       setMessage("Welcome,user!");
     }
       else{
@@ -30,15 +30,17 @@ function App() {
             value={username}
             onChange={(e)=>setUsername(e.target.value)}
             placeholder="Enter username"
+          required
           />
         </div>
         <div>
           <label>Password: </label>
           <input
-            type="text"
+            type="password"
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
             placeholder="Enter password"
+          required
           />
         </div>
         <button type="submit">Submit</button>
@@ -47,10 +49,6 @@ function App() {
     </div>
 
   );
-
-    
-    
- 
 }
 
 export default App;
