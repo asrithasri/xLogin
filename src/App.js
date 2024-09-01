@@ -11,9 +11,10 @@ function App() {
 
   const handleSubmit =(e)=>{
     e.preventDefault();
+    
     if(username ==="user" && password==='password'){
       setAuthentication(true);
-      setMessage("Welcome,user!");
+      setMessage("Welcome, user");
       // Clear username and password fields after successful login
       setUsername("");
       setPassword("");
@@ -54,7 +55,7 @@ function App() {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {message && <h2> {message}</h2>}
+      { <h2> {message}</h2>}
       </>
       ):(
         <h3>{message}</h3>
